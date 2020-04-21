@@ -64,6 +64,7 @@ while continuer:
                 if event.key == K_RIGHT:
                     personnage.position = personnage.mouv("D")
                     position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+        sprite = pygame.image.load(personnage.sprite).convert_alpha()
         fenetre.blit(fond, (0,0))
         fenetre.blit(sprite, position_perso)
         pygame.display.flip()
