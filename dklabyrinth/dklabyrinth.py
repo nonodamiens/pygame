@@ -55,7 +55,15 @@ while continuer:
                 if event.key == K_DOWN:
                     personnage.position = personnage.mouv("B")
                     position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
-                    print(position_perso)
+                if event.key == K_UP:
+                    personnage.position = personnage.mouv("H")
+                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                if event.key == K_LEFT:
+                    personnage.position = personnage.mouv("G")
+                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                if event.key == K_RIGHT:
+                    personnage.position = personnage.mouv("D")
+                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
         fenetre.blit(fond, (0,0))
         fenetre.blit(sprite, position_perso)
         pygame.display.flip()
