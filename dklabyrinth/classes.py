@@ -29,7 +29,8 @@ class Niveau():
         """ blabla 2 """
         if level == 1:
             with open("l1.txt", "r") as niveau:
-                self.lab = niveau.read()
+                lab = niveau.read()
+            self.walls = lab.split("\n")
         elif level == 2:
             print("level 2")
 
