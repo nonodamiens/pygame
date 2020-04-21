@@ -8,6 +8,7 @@ class Perso():
         self.direction = "B"
 
     def mouv(self, dir):
+        """ blabla 3 """
         if dir == "G" and self.position[0] - 1 >= 0:
             self.position = (self.position[0] - 1, self.position[1])
             self.sprite = "dk_gauche.png"
@@ -21,4 +22,15 @@ class Perso():
             self.position = (self.position[0], self.position[1] + 1)
             self.sprite = "dk_bas.png"
         return self.position
+
+class Niveau():
+    """ blabla """
+    def __init__(self, level):
+        """ blabla 2 """
+        if level == 1:
+            with open("l1.txt", "r") as niveau:
+                self.lab = niveau.read()
+        elif level == 2:
+            print("level 2")
+
 

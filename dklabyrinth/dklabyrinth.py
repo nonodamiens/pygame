@@ -27,6 +27,9 @@ fond = pygame.image.load(image_fond).convert()
 personnage = Perso()
 sprite = pygame.image.load(personnage.sprite).convert_alpha()
 position_perso = sprite.get_rect(topleft=(0, 0))
+start = pygame.image.load("depart.png").convert()
+end = pygame.image.load("arrivee.png").convert()
+mur = pygame.image.load("mur.png").convert()
 
 # Boucle principale
 while continuer:
@@ -38,6 +41,7 @@ while continuer:
                 continuer = 0
             if event.type == KEYDOWN:
                 if event.key == K_F1:
+                    laby = Niveau(1)
                     title = False
                     game = True
                 if event.key == K_F2:
@@ -66,6 +70,22 @@ while continuer:
                     position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
         sprite = pygame.image.load(personnage.sprite).convert_alpha()
         fenetre.blit(fond, (0,0))
+        col = 0
+        row = 0
+        for p in laby.lab:
+            if p == "\n":
+                col = 0
+                row += 1
+            elif p == "d":
+                fenetre.blit(start, (0,0))
+                col += 1
+            elif p == "a":
+                fenetre.blit(end, (14 * 30, 14 * 30))
+            elif p == "m":
+                fenetre.blit(mur, (col * 30, row * 30))
+                col += 1
+            else:
+                col += 1
         fenetre.blit(sprite, position_perso)
         pygame.display.flip()
 
