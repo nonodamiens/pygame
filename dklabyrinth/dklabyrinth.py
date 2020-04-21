@@ -9,6 +9,7 @@ import pygame
 from pygame.locals  import *
 
 from constantes import *
+from classes import *
 
 # pygame initialisation
 pygame.init()
@@ -22,7 +23,9 @@ fenetre = pygame.display.set_mode((cote_fenetre, cote_fenetre))
 
 # load images
 accueil = pygame.image.load(image_accueil)
-fond = pygame.image.load(image_fond)
+fond = pygame.image.load(image_fond).convert()
+personnage = Perso()
+sprite = pygame.image.load(personnage.sprite).convert_alpha()
 
 # Boucle principale
 while continuer:
@@ -48,6 +51,7 @@ while continuer:
                 game = False
                 continuer = 0
         fenetre.blit(fond, (0,0))
+        fenetre.blit(sprite, personnage.position)
         pygame.display.flip()
 
     # Boucle menu
