@@ -26,6 +26,7 @@ accueil = pygame.image.load(image_accueil)
 fond = pygame.image.load(image_fond).convert()
 personnage = Perso()
 sprite = pygame.image.load(personnage.sprite).convert_alpha()
+position_perso = sprite.get_rect(topleft=(0, 0))
 
 # Boucle principale
 while continuer:
@@ -50,8 +51,13 @@ while continuer:
             if event.type == QUIT:
                 game = False
                 continuer = 0
+            if event.type == KEYDOWN:
+                if event.key == K_DOWN:
+                    personnage.position = personnage.mouv("B")
+                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                    print(position_perso)
         fenetre.blit(fond, (0,0))
-        fenetre.blit(sprite, personnage.position)
+        fenetre.blit(sprite, position_perso)
         pygame.display.flip()
 
     # Boucle menu
