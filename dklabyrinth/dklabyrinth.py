@@ -27,9 +27,9 @@ fond = pygame.image.load(image_fond).convert()
 personnage = Perso()
 sprite = pygame.image.load(personnage.sprite).convert_alpha()
 position_perso = sprite.get_rect(topleft=(0, 0))
-start = pygame.image.load("depart.png").convert()
-end = pygame.image.load("arrivee.png").convert()
-mur = pygame.image.load("mur.png").convert()
+start = pygame.image.load(image_depart).convert()
+end = pygame.image.load(image_arrivee).convert()
+mur = pygame.image.load(image_mur).convert()
 
 # Test de colision
 def colision(direction):
@@ -42,6 +42,9 @@ def colision(direction):
     elif direction == "D" and personnage.position[0] + 1 < 15:
         return laby.walls[personnage.position[1]][personnage.position[0] + 1] != "m"
 
+continuer = True
+title = True
+game = False
 # Boucle principale
 while continuer:
     while title:
