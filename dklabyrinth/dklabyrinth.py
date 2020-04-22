@@ -33,13 +33,13 @@ mur = pygame.image.load("mur.png").convert()
 
 # Test de colision
 def colision(direction):
-    if direction == "B":
+    if direction == "B" and personnage.position[1] + 1 < 15:
         return laby.walls[personnage.position[1] + 1][personnage.position[0]] != "m"
-    elif direction == "H":
+    elif direction == "H" and personnage.position[1] - 1 >= 0:
         return laby.walls[personnage.position[1] - 1][personnage.position[0]] != "m"
-    elif direction == "G":
+    elif direction == "G" and personnage.position[0] - 1 >= 0:
         return laby.walls[personnage.position[1]][personnage.position[0] - 1] != "m"
-    elif direction == "D":
+    elif direction == "D" and personnage.position[0] + 1 < 15:
         return laby.walls[personnage.position[1]][personnage.position[0] + 1] != "m"
 
 # Boucle principale
@@ -87,7 +87,6 @@ while continuer:
         fenetre.blit(fond, (0,0))
         for row in range(15):
             for i, p in enumerate(laby.walls[row]):
-                print(row, i, p)
                 if p == "d":
                     fenetre.blit(start, (0,0))
                 elif p == "a":
