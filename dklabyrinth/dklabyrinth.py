@@ -31,6 +31,17 @@ start = pygame.image.load("depart.png").convert()
 end = pygame.image.load("arrivee.png").convert()
 mur = pygame.image.load("mur.png").convert()
 
+# Test de colision
+def colision(direction):
+    if direction == "B":
+        return laby.walls[personnage.position[1] + 1][personnage.position[0]] != "m"
+    elif direction == "H":
+        return laby.walls[personnage.position[1] - 1][personnage.position[0]] != "m"
+    elif direction == "G":
+        return laby.walls[personnage.position[1]][personnage.position[0] - 1] != "m"
+    elif direction == "D":
+        return laby.walls[personnage.position[1]][personnage.position[0] + 1] != "m"
+
 # Boucle principale
 while continuer:
     while title:
@@ -57,27 +68,32 @@ while continuer:
                 continuer = 0
             if event.type == KEYDOWN:
                 if event.key == K_DOWN:
-                    personnage.position = personnage.mouv("B")
-                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                    if colision("B"):
+                        personnage.position = personnage.mouv("B")
+                        position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
                 if event.key == K_UP:
-                    personnage.position = personnage.mouv("H")
-                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                    if colision("H"):
+                        personnage.position = personnage.mouv("H")
+                        position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
                 if event.key == K_LEFT:
-                    personnage.position = personnage.mouv("G")
-                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                    if colision("G"):
+                        personnage.position = personnage.mouv("G")
+                        position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
                 if event.key == K_RIGHT:
-                    personnage.position = personnage.mouv("D")
-                    position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                    if colision("D"):
+                        personnage.position = personnage.mouv("D")
+                        position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
         sprite = pygame.image.load(personnage.sprite).convert_alpha()
         fenetre.blit(fond, (0,0))
         for row in range(15):
             for i, p in enumerate(laby.walls[row]):
+                print(row, i, p)
                 if p == "d":
                     fenetre.blit(start, (0,0))
                 elif p == "a":
                     fenetre.blit(end, (14 * 30, 14 * 30))
                 elif p == "m":
-                    fenetre.blit(mur, (row * 30, i * 30))
+                    fenetre.blit(mur, (i * 30, row * 30))
         fenetre.blit(sprite, position_perso)
         pygame.display.flip()
 
