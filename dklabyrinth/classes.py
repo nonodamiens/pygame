@@ -28,10 +28,12 @@ class Niveau():
     def __init__(self, level):
         """ blabla 2 """
         if level == 1:
-            with open("l1.txt", "r") as niveau:
-                lab = niveau.read()
-            self.walls = lab.split("\n")
+            level_file = "l1.txt"
         elif level == 2:
-            print("level 2")
+            level_file = "l2.txt"
+
+        with open(level_file, "r") as niveau:
+            lab = niveau.read()
+        self.walls = lab.split("\n")
 
 

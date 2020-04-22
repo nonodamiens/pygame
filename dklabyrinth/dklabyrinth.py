@@ -56,6 +56,7 @@ while continuer:
                     title = False
                     game = True
                 if event.key == K_F2:
+                    laby = Niveau(2)
                     title = False
                     game = True
         fenetre.blit(accueil, (0,0))
