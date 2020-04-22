@@ -83,6 +83,12 @@ while continuer:
                     if colision("D"):
                         personnage.position = personnage.mouv("D")
                         position_perso = (personnage.position[0] * 30, personnage.position[1] * 30)
+                if personnage.position == (14, 14):
+                    print("YOU WON !!!")
+                    game = False
+                    title = True
+                    personnage.position = (0,0)
+                    position_perso = personnage.position
         sprite = pygame.image.load(personnage.sprite).convert_alpha()
         fenetre.blit(fond, (0,0))
         for row in range(15):
