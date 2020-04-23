@@ -27,6 +27,20 @@ son.play()
 # pygame.mixer.pause()
 # pygame.mixer.unpause()
 # pygame.mixer.stop()
+# Quelques autres fonctions
+# son.fadeout(300) #Fondu à 300ms de la fin de l'objet "son"
+# pygame.mixer.fadeout(300) #Fondu à 300ms de la fin de tous les objets Sound
+
+# En ce qui concerne le module music :
+# pygame.mixer.music.load("musique.wav") #Charge musique dans la playlist
+# pygame.mixer.music.queue("musique2.wav") #positionne la musique2 à la fin de la playlist
+# pygame.mixer.music.start()
+# pygame.mixer.music.stop()
+# pygame.mixer.music.pause()
+# pygame.mixer.music.unpause()
+# pygame.mixer.music.fadeout(300)
+# volume = pygame.mixer.music.get_volume() #Retourne la valeur du volume, entre 0 et 1
+# pygame.mixer.music.set_volume(0.5) #Met le volume à 0.5 (moitié)
 
 # 2 - boucle
 # variable de vérification du premier lancement de la musique
