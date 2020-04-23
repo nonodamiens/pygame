@@ -46,3 +46,6 @@ while continuer:
         if event.type == KEYUP:
             if event.key == K_SPACE:
                 pygame.mixer.pause()
+        if event.type == KEYDOWN and event.key == K_RETURN:
+            music.stop()
+            start = True
