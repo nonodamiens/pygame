@@ -1,5 +1,12 @@
 """
 Ce fichier python sert à tester la gestion du joystick avec pygame
+
+Pour les boutons, les types d'évenements sont JOYBUTTONDOWN et JOYBUTTONUP
+event.button renvoit le numéro du button de l'évenement
+
+Pour les directions, le type d'évenement est JOYAXISMOTION
+event.axis renvoit l'axe (0 pour l'axe horizontal / 1 axe vertical)
+event.value renvoit la valeur (intensité) entre -1 (gauche/haut) et 1 (droite/bas)
 """
 
 import pygame
