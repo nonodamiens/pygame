@@ -17,6 +17,7 @@ fenetre = pygame.display.set_mode((200,200))
 
 # 1 - créer un objet son
 son = pygame.mixer.Sound("coq.wav")
+music = pygame.mixer.Sound("music.wav")
 
 # jouer le son
 son.play()
@@ -28,11 +29,20 @@ son.play()
 # pygame.mixer.stop()
 
 # 2 - boucle
+# variable de vérification du premier lancement de la musique
+start = True
 continuer = True
 while continuer:
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = False
         if event.type == KEYDOWN:
-            # stopper le son
-            son.stop()
+            if event.key == K_SPACE:
+                if start:
+                    music.play()
+                    start = False
+                else:
+                    pygame.mixer.unpause()
+        if event.type == KEYUP:
+            if event.key == K_SPACE:
+                pygame.mixer.pause()
